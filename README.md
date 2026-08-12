@@ -20,6 +20,8 @@ http://44.223.21.143:5000/
 
 ## 🔐 Demo Credentials
 
+These are test/demo accounts provided for evaluation.
+
 ### Admin
 
 Email: `demo@fundsroom.com`
@@ -51,8 +53,6 @@ Email: `accounts@test.com`
 Password: `Test@123`
 
 Role: `ACCOUNTS`
-
-> These credentials are test/demo accounts provided for evaluation.
 
 ---
 
@@ -164,3 +164,88 @@ The application follows a client-server architecture.
                         v
                   PostgreSQL
                     Supabase
+
+Backend Request Flow
+Client
+  ↓
+Route
+  ↓
+Authentication Middleware
+  ↓
+Authorization Middleware
+  ↓
+Controller
+  ↓
+Service
+  ↓
+Database
+
+📂 Project Structure
+
+fundsroom/
+│
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── server.ts
+│   │
+│   └── package.json
+│
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── assets/
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   │
+│   └── package.json
+│
+└── docs/
+    └── API_DOCUMENTATION.md
+
+👥 Roles & Permissions
+
+The application supports four roles:
+
+Module	ADMIN	SALES	WAREHOUSE	ACCOUNTS
+Customers	Full	Manage/View	-	-
+Follow-ups	Manage/View	Manage/View	-	-
+Products	Full	-	View	-
+Inventory	Manage	-	Manage	-
+Challans	Full	Create/View/Update	View	View
+Challan Items	Manage/View	Manage/View	View	View
+
+🚀 Deployment
+
+The application is deployed on an AWS EC2 instance running Amazon Linux.
+
+Frontend
+
+http://44.223.21.143:3000/
+
+Backend API
+
+http://44.223.21.143:5000/
+
+The backend runs on port 5000.
+
+The frontend is served on port 3000.
+
+Environment variables are configured separately on the deployment server.
+
+🔒 Security
+JWT authentication for protected APIs
+Role-based authorization
+Password hashing using bcrypt
+Environment variables for sensitive configuration
+.env excluded from version control
+Database credentials are not stored in source code
+JWT secrets are not stored in source code
+⚠️ Known Limitations
+The system is designed as a mini ERP/CRM and does not cover every enterprise workflow.
+Advanced reporting and analytics are limited.
+Product image/file upload functionality is not included.
+Production configuration may require environment-specific adjustments.
